@@ -8,9 +8,7 @@ import {
   Heading,
   Button,
   VStack,
-  InputGroup,
 } from "@chakra-ui/react";
-// import { Switch } from "@chakra-ui/react";
 import { useState } from "react";
 import { Field } from "@chakra-ui/react";
 // Update the import path below to the correct relative path if PasswordInput exists elsewhere, for example:
@@ -41,7 +39,7 @@ function Login() {
             </Heading>
 
             <Field.Root required>
-              <Field.Label>Tài khoản</Field.Label>
+              <Field.Label>Email</Field.Label>
                 <Input type="email" placeholder="exam@gmail.com" />
             </Field.Root>
 
@@ -62,6 +60,19 @@ function Login() {
               fontWeight="bold">
               Đăng nhập
             </Button>
+            <Text fontSize="sm" color="gray.600">Bạn chưa có tài khoản?
+            </Text>
+      <Button
+      variant="outline"
+      colorScheme="teal"
+      width="full"
+      fontWeight="bold"
+      onClick={() => {
+    // Điều hướng tới trang đăng ký nếu có
+    // Ví dụ dùng React Router: navigate("/register");
+    alert("link đăng kí"); // tạm thời
+  }}>Quên mật khẩu 
+      </Button>
           </VStack>
         </Box>
       </Box>
