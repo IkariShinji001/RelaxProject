@@ -16,7 +16,7 @@ import { PasswordInput } from "../../components/ui/password-input";
 // Or create the file at src/components/ui/password-input.tsx if it does not exist.
 
 function Login() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   return (
     <Container maxW="md">
@@ -27,12 +27,7 @@ function Login() {
         justifyContent="center"
         px={4}
       >
-        <Box
-          p={8}
-          rounded="lg"
-          shadow="md"
-          w="full"
-        >
+        <Box p={8} rounded="lg" shadow="md" w="full">
           <VStack gap={6} as="form">
             <Heading size="lg" textAlign="center">
               Đăng nhập
@@ -40,39 +35,43 @@ function Login() {
 
             <Field.Root required>
               <Field.Label>Email</Field.Label>
-                <Input type="email" placeholder="exam@gmail.com" />
+              <Input type="email" placeholder="exam@gmail.com" />
             </Field.Root>
 
             <Field.Root required>
               <Field.Label>Mật khẩu</Field.Label>
-                <PasswordInput
-                  defaultValue="secret"
-                  visible={visible}
-                  onVisibleChange={setVisible} 
-                  placeholder="Nhập mật khẩu"
-                  />
-                  <Text >nhấn để {visible ? "ẩn" : "hiện"}</Text>
+              <PasswordInput
+                defaultValue="secret"
+                visible={visible}
+                onVisibleChange={setVisible}
+                placeholder="Nhập mật khẩu"
+              />
+              <Text>nhấn để {visible ? "ẩn" : "hiện"}</Text>
             </Field.Root>
             <Button
               colorScheme="teal"
               type="submit"
               width="full"
-              fontWeight="bold">
+              fontWeight="bold"
+            >
               Đăng nhập
             </Button>
-            <Text fontSize="sm" color="gray.600">Bạn chưa có tài khoản?
+            <Text fontSize="sm" color="gray.600">
+              Bạn chưa có tài khoản?
             </Text>
-      <Button
-      variant="outline"
-      colorScheme="teal"
-      width="full"
-      fontWeight="bold"
-      onClick={() => {
-    // Điều hướng tới trang đăng ký nếu có
-    // Ví dụ dùng React Router: navigate("/register");
-    alert("link đăng kí"); // tạm thời
-  }}>Quên mật khẩu 
-      </Button>
+            <Button
+              variant="outline"
+              colorScheme="teal"
+              width="full"
+              fontWeight="bold"
+              onClick={() => {
+                // Điều hướng tới trang đăng ký nếu có
+                // Ví dụ dùng React Router: navigate("/register");
+                alert("link đăng kí"); // tạm thời
+              }}
+            >
+              Quên mật khẩu
+            </Button>
           </VStack>
         </Box>
       </Box>
