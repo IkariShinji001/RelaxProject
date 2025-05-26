@@ -11,14 +11,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Field } from "@chakra-ui/react";
-// Update the import path below to the correct relative path if PasswordInput exists elsewhere, for example:
-import { PasswordInput } from "../../components/ui/password-input";
-// Or create the file at src/components/ui/password-input.tsx if it does not exist.
+import { useNavigate } from "react-router-dom";
 
+import { PasswordInput } from "../../components/ui/password-input"
 function Login() {
   const [visible, setVisible] = useState(false)
+  const navigate = useNavigate();
 
   return (
+    
     <Container maxW="md">
       <Box
         minH="100vh"
@@ -65,12 +66,11 @@ function Login() {
       <Button
       variant="outline"
       colorScheme="teal"
-      width="full"
-      fontWeight="bold"
       onClick={() => {
+      navigate("/register");
     // Điều hướng tới trang đăng ký nếu có
     // Ví dụ dùng React Router: navigate("/register");
-    alert("link đăng kí"); // tạm thời
+      alert("link đăng kí"); // tạm thời
   }}>Quên mật khẩu 
       </Button>
           </VStack>
