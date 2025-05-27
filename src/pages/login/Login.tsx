@@ -46,8 +46,8 @@ function Login() {
                 onVisibleChange={setVisible}
                 placeholder="Nhập mật khẩu"
               />
-              <Text fontSize="sm" color="gray.500">
-                Nhấn để {visible ? "ẩn" : "hiện"} mật khẩu
+              <Text padding={2} fontSize="sm" color="gray.500">
+                Nhấn để {visible ? "ẩn" : "hiện"}
               </Text>
             </Field.Root>
 

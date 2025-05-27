@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-// Update the import path below if your Register component is located elsewhere
+// Update the import 
 import ForgotPassword from "./pages/login/forgotPassword";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/forgotPassword" element={<ForgotPassword />} />
+      <Route path="/ForgotPassword" element={<ForgotPassword />} />
       {/* Add more routes as needed */}
     </Routes>
   );
