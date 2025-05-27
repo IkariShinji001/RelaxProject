@@ -46,10 +46,9 @@ function Login() {
                 onVisibleChange={setVisible}
                 placeholder="Nhập mật khẩu"
               />
-              <Text padding={2} fontSize="sm" color="gray.500">
-                Nhấn để {visible ? "ẩn" : "hiện"}
-              </Text>
+              
             </Field.Root>
+            
 
             <Button
               colorScheme="teal"
@@ -63,12 +62,11 @@ function Login() {
             <Text fontSize="sm" color="gray.600">
               Bạn chưa có tài khoản?
             </Text>
-
             <Button
               variant="outline"
               colorScheme="teal"
               onClick={() => {
-                navigate("/register");
+                navigate("/ForgotPassword");
               }}
               width="full"
             >

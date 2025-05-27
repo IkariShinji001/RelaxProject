@@ -44,7 +44,7 @@ function ForgotPassword() {
 
             <Field.Root required>
               <Field.Label fontSize={{ base: "sm", md: "md" }}>Nhấn để gửi mã</Field.Label>
-              <Button variant="outline" w="full">
+              <Button variant="outline" w="full" type="submit">
                 Gửi
               </Button>
             </Field.Root>
