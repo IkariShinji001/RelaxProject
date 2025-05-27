@@ -44,11 +44,10 @@ function ForgotPassword() {
             <Field.Root required>
               <Field.Label fontSize={{ base: "sm", md: "md" }}>Nhấn để gửi mã</Field.Label>
               <Button variant="outline" w="full" type="submit"  onClick={() => {
-                // Điều hướng tới trang đăng ký nếu có
-                // Ví dụ dùng React Router: navigate("/register");
+                
                 alert("mã đang gửi ..."); // tạm thời
               }} >
-                
+              
                 Gửi
               </Button>
             </Field.Root>
@@ -58,7 +57,7 @@ function ForgotPassword() {
 
       {/* Thêm phần dưới nếu muốn */}
       <HStack justify="center" mt={6}>
-        {/* Ví dụ: <Button variant="link">Quay lại</Button> */}
+        
       </HStack>
     </Container>
   );
