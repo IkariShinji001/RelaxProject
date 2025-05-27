@@ -31,7 +31,6 @@ function ForgotPassword() {
           >
             Quên mật khẩu
           </Heading>
-
           <Stack gap={4}>
             <Field.Root required>
               <Field.Label fontSize={{ base: "sm", md: "md" }}>Email</Field.Label>
@@ -44,7 +43,12 @@ function ForgotPassword() {
 
             <Field.Root required>
               <Field.Label fontSize={{ base: "sm", md: "md" }}>Nhấn để gửi mã</Field.Label>
-              <Button variant="outline" w="full" type="submit">
+              <Button variant="outline" w="full" type="submit"  onClick={() => {
+                // Điều hướng tới trang đăng ký nếu có
+                // Ví dụ dùng React Router: navigate("/register");
+                alert("mã đang gửi ..."); // tạm thời
+              }} >
+                
                 Gửi
               </Button>
             </Field.Root>
