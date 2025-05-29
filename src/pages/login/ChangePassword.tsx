@@ -4,7 +4,7 @@ Box,
 VStack,
 Button,
 Text,
-Progress,
+Progress
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,24 +19,20 @@ const [visibleConfirm, setVisibleConfirm] = useState(false);
 const [passwordStrength, setPasswordStrength] = useState(0);
 const navigate = useNavigate();
 
+const hasUpper = (pw: string) => /[A-Z]/.test(pw);
+const hasLower = (pw: string) => /[a-z]/.test(pw);
+const hasNumber = (pw: string) => /[0-9]/.test(pw);
+const hasSpecial = (pw: string) => /[^A-Za-z0-9]/.test(pw);
+const hasMinLength = (pw: string) => pw.length >= 6;
+
 const getPasswordStrength = (pw: string): number => {
-let strength = 0;
-
-const hasUpper = pw.split('').some((c) => c >= 'A' && c <= 'Z');
-const hasLower = pw.split('').some((c) => c >= 'a' && c <= 'z');
-const hasNumber = pw.split('').some((c) => c >= '0' && c <= '9');
-const hasSpecial = pw.split('').some((c) => {
-const code = c.charCodeAt(0);
-return !(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && !(c >= '0' && c <= '9');
-});
-
-if (hasUpper) strength += 1;
-if (hasLower) strength += 1;
-if (hasNumber) strength += 1;
-if (hasSpecial) strength += 1;
-if (pw.length >= 6) strength += 1;
-
-return strength;
+  let strength = 0;
+  if (hasUpper(pw)) strength += 1;
+  if (hasLower(pw)) strength += 1;
+  if (hasNumber(pw)) strength += 1;
+  if (hasSpecial(pw)) strength += 1;
+  if (hasMinLength(pw)) strength += 1;
+  return strength;
 };
 
 
@@ -48,18 +44,22 @@ setPasswordStrength(getPasswordStrength(newPassword));
 };
 
 const handleSubmit = (e: React.FormEvent) => {
-e.preventDefault();
-if (!password || !confirmPassword) {
-alert("Không được để trống mật khẩu.");
-} else if (password.length < 6) {
-alert("Mật khẩu phải có ít nhất 6 ký tự.");
-} else if (password !== confirmPassword) {
-alert("Mật khẩu không khớp.");
-} else {
-// Xử lý gửi mật khẩu
-navigate("/Home");
-}
+  e.preventDefault();
+
+  if (!password || !confirmPassword) {
+    alert("Không được để trống mật khẩu.");
+  } else if (!hasMinLength(password)) {
+    alert("Mật khẩu phải có ít nhất 6 ký tự.");
+  } else if (!(hasUpper(password) && hasLower(password) && hasNumber(password) && hasSpecial(password))) {
+    alert("Mật khẩu phải có ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.");
+  } else if (password !== confirmPassword) {
+    alert("Mật khẩu không khớp.");
+  } else {
+    alert("Đổi mật khẩu thành công!");
+    navigate("/Home");
+  }
 };
+
 
 return (
 <Container maxW="md">
