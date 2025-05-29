@@ -19,15 +19,27 @@ function ChangePassword() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const navigate = useNavigate();
 
-  const getPasswordStrength = (pw: string) => {
-    let strength = 0;
-    if (pw.length >= 6) strength += 1;
-    if (/[A-Z]/.test(pw)) strength += 1;
-    if (/[a-z]/.test(pw)) strength += 1;
-    if (/[0-9]/.test(pw)) strength += 1;
-    if (/[^A-Za-z0-9]/.test(pw)) strength += 1;
-    return strength;
-  };
+  const getPasswordStrength = (pw: string): number => {
+  let strength = 0;
+
+  const hasUpper = pw.split('').some((c) => c >= 'A' && c <= 'Z');
+  const hasLower = pw.split('').some((c) => c >= 'a' && c <= 'z');
+  const hasNumber = pw.split('').some((c) => c >= '0' && c <= '9');
+  const hasSpecial = pw.split('').some((c) => {
+    const code = c.charCodeAt(0);
+    return !(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && !(c >= '0' && c <= '9');
+  });
+
+  if (hasUpper) strength += 1;
+  if (hasLower) strength += 1;
+  if (hasNumber) strength += 1;
+  if (hasSpecial) strength += 1;
+  if (pw.length >= 6) strength += 1;
+
+  return strength;
+};
+
+
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
@@ -35,7 +47,7 @@ function ChangePassword() {
     setPasswordStrength(getPasswordStrength(newPassword));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!password || !confirmPassword) {
       alert("Không được để trống mật khẩu.");
