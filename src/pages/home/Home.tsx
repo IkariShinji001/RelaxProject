@@ -1,19 +1,13 @@
-import { Button, HStack } from "@chakra-ui/react";
-import { Container } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
-import { PasswordInput } from "@/components/ui/password-input";
+import { Outlet } from "react-router-dom";
+import Sidebar from "@/pages/home/components/Sidebar"; // nếu có
 
-function Home() {
+export default function Home() {
   return (
-    <Container>
-      <HStack>
-        <Button>Click me</Button>
-        <Button>Click me</Button>
-        <Input placeholder="sss" variant="flushed" />
-        <PasswordInput />
-      </HStack>
-    </Container>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+      <main style={{ padding: 20, flexGrow: 1 }}>
+        <Outlet />
+      </main>
+    </div>
   );
 }
-
-export default Home;
